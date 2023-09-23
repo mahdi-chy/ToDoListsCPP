@@ -1,7 +1,15 @@
 #include <iostream>
+#include <vector>
 #include"newtask.h"
+
+void taskLoad(std::vector<std::string>&tasks) {
+
+}
+
 int main() {
 	bool isRunning = true;
+	std::vector<std::string> tasks;
+	taskLoad(tasks);
 	int userInput = 0;
 	while (isRunning==true) {
 		std::cout << "---------- To-Do List ---------\n"
