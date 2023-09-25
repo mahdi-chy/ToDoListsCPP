@@ -1,15 +1,27 @@
 #include <iostream>
+#include "fstream"
 #include <vector>
 #include"newtask.h"
 
-void taskLoad(std::vector<std::string>&tasks) {
+void taskLoad(std::vector<std::string>& tasks, std::vector<std::string>& taskID) {
+	std::fstream saveFile;
+	saveFile.open("backup.txt", std::ios::in | std::ios::out | std::ios::app);
+	if (saveFile.is_open()) {
+		std::cout << "--- File Loaded ---" << std::endl;
 
+
+	}
+	else {
+		std::cout << "file error" << std::endl;
+	}
+	saveFile.close();
 }
 
 int main() {
 	bool isRunning = true;
 	std::vector<std::string> tasks;
-	taskLoad(tasks);
+	std::vector<std::string> taskID;
+	taskLoad(tasks,taskID);
 	int userInput = 0;
 	while (isRunning==true) {
 		std::cout << "---------- To-Do List ---------\n"
@@ -31,7 +43,7 @@ int main() {
 			editTask();
 			break;
 		case 4:
-			showTask;
+			showTask();
 			break;
 		case 5:
 			isRunning = false;
