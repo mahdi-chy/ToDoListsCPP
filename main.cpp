@@ -4,14 +4,21 @@
 #include <string>
 #include"newtask.h"
 
-void taskLoad(std::vector<std::string>& tasks, std::vector<std::string>& taskID) {
+struct taStruct {
+	std::vector<std::string> tasks;
+	std::vector<std::string> taskID;
+};
+
+std::string taskLoad(std::vector<taStruct>& tasks) {
+	std::vector<taStruct> result;
 	std::fstream saveFile;
 	saveFile.open("backup.txt", std::ios::in | std::ios::out | std::ios::app);
 	if (saveFile.is_open()) {
 		std::cout << "--- File Loaded ---" << std::endl;
 		std::string line;
+		std::vector<taStruct>& temp=tasks;
 		while (std::getline(saveFile,line)) {
-			taskID.push_back(line);
+			result.push_back({temp.tasks, });
 			std::getline(saveFile, line);
 			tasks.push_back(line);
 		}
@@ -25,9 +32,9 @@ void taskLoad(std::vector<std::string>& tasks, std::vector<std::string>& taskID)
 
 int main() {
 	bool isRunning = true;
-	std::vector<std::string> tasks;
-	std::vector<std::string> taskID;
-	taskLoad(tasks,taskID);
+	taStruct tasks;
+
+	taskLoad(tasks.taskID,tasks.tasks);
 	int userInput = 0;
 	while (isRunning==true) {
 		std::cout << "---------- To-Do List ---------\n"
@@ -49,7 +56,7 @@ int main() {
 			editTask();
 			break;
 		case 4:
-			showTask(tasks,taskID);
+			tasks=showTask(tasks.taskID,tasks.tasks);
 			break;
 		case 5:
 			isRunning = false;

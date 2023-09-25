@@ -1,5 +1,9 @@
 #include"iostream"
+#include<vector>
 #include"newtask.h"
+
+extern std::vector<std::string> tasks;
+extern std::vector<std::string> taskID;
 
 
 int newTask() {
@@ -20,12 +24,13 @@ int editTask() {
 }
 
 
-void showTask(std::vector<std::string>& tasks, std::vector<std::string>& taskID) {
+std::string showTask() {
+	auto j = taskID.begin();
 	for (auto i = tasks.begin(); i != tasks.end();i++) {
-		auto j = taskID.begin(); j != taskID.end(); j++;
+		 j != taskID.end(); j++;
 		std::cout << tasks[1];
 		std::cout << taskID[1];
 	}
-	
+	return 0;
 }
 
