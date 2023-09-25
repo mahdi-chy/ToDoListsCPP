@@ -1,7 +1,11 @@
-#include<iostream>
-#include <vector>
-#include <fstream>
-int newTask();
-int deleteTask();
-int editTask();
-std::string showTask(std::vector<std::string>, std::vector<std::string>);
+#ifndef NEWTASK_H
+#define NEWTASK_H
+
+#include <string>
+
+void newTask();
+void deleteTask();
+void editTask();
+void showTask();
+
+#endif // NEWTASK_H
