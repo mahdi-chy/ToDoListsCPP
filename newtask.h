@@ -4,4 +4,4 @@
 int newTask();
 int deleteTask();
 int editTask();
-int showTask();
+int showTask(std::vector<std::string>, std::vector<std::string>);

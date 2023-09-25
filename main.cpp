@@ -1,6 +1,7 @@
 #include <iostream>
 #include "fstream"
 #include <vector>
+#include <string>
 #include"newtask.h"
 
 void taskLoad(std::vector<std::string>& tasks, std::vector<std::string>& taskID) {
@@ -8,7 +9,12 @@ void taskLoad(std::vector<std::string>& tasks, std::vector<std::string>& taskID)
 	saveFile.open("backup.txt", std::ios::in | std::ios::out | std::ios::app);
 	if (saveFile.is_open()) {
 		std::cout << "--- File Loaded ---" << std::endl;
-
+		std::string line;
+		while (std::getline(saveFile,line)) {
+			taskID.push_back(line);
+			std::getline(saveFile, line);
+			tasks.push_back(line);
+		}
 
 	}
 	else {
@@ -43,7 +49,7 @@ int main() {
 			editTask();
 			break;
 		case 4:
-			showTask();
+			showTask(tasks,taskID);
 			break;
 		case 5:
 			isRunning = false;
