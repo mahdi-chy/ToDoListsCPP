@@ -1,36 +1,21 @@
-#include"iostream"
-#include<vector>
-#include"newtask.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include "newtask.h"
 
-extern std::vector<std::string> tasks;
-extern std::vector<std::string> taskID;
-
-
-int newTask() {
-
-	return 0;
+// Define your functions here
+void newTask() {
+    // Implement adding a new task
 }
 
-
-int deleteTask() {
-
-	return 0;
+void deleteTask() {
+    // Implement deleting a task
 }
 
-
-int editTask() {
-
-	return 0;
+void editTask() {
+    // Implement editing a task
 }
 
-
-std::string showTask() {
-	auto j = taskID.begin();
-	for (auto i = tasks.begin(); i != tasks.end();i++) {
-		 j != taskID.end(); j++;
-		std::cout << tasks[1];
-		std::cout << taskID[1];
-	}
-	return 0;
+void showTask() {
+    // Implement displaying all tasks
 }
-
