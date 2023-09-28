@@ -3,6 +3,12 @@
 
 #include <string>
 
+struct Task {
+    int id;
+    std::string description;
+
+};
+
 void newTask();
 void deleteTask();
 void editTask();

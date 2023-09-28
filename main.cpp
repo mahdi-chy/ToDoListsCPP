@@ -3,19 +3,41 @@
 #include <fstream>
 #include "newtask.h"
 
-struct Task {
-    std::string description;
-    std::string id;
-};
+
 
 std::vector<Task> tasks;
 
 void taskLoad() {
     // Implement loading tasks from a file (e.g., "backup.txt") into the 'tasks' vector.
+    std::ifstream inputFile("backup.txt");
+    if (inputFile.is_open()) {
+        int lineID;
+        std::string stringID;
+        std::string lineDes;
+        while (std::getline(inputFile,stringID)) {
+            lineID = std::stoi(stringID);
+            std::getline(inputFile, lineDes);
+            tasks.push_back({lineID,lineDes}); 
+        }
+    }
+    inputFile.close();
 }
 
 void taskSave() {
     // Implement saving tasks from the 'tasks' vector to a file (e.g., "backup.txt").
+    std::ofstream outputFile("backup.txt");
+    int lineID;
+    std::string lineDes;
+    if (outputFile.is_open()) {
+        for (const Task& task : tasks) {
+            lineID  = task.id;
+            lineDes = task.description;
+            outputFile << lineID<<std::endl;
+            outputFile << lineDes<<std::endl;
+        }
+
+    }
+    outputFile.close();
 }
 
 int main() {
@@ -34,6 +56,7 @@ int main() {
                   << std::endl;
 
         std::cin >> userInput;
+        std::cin.ignore();
         switch (userInput) {
             case 1:
                 newTask();
