@@ -35,13 +35,16 @@ void deleteTask() {
 
 void editTask() {
     int userInput;
+    std::string line;
     std::cout << "Type the ID of the task you want to edit: ";
     std::cin >> userInput;
     std::cin.ignore();
 
-    for (const Task& i : tasks) {
+    for (Task& i : tasks) {
         if (i.id==userInput) {
-            std::cout<<"ID: "<<i.id<<" "
+            std::cout << "ID: " << i.id << " Enter new details: ";
+            std::getline(std::cin, line);
+            i.description = line;
         }
     }
 }
