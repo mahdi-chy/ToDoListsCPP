@@ -1,38 +1,56 @@
-#include <iostream>
-#include <vector>
-#include <string>
 #include "newtask.h"
 
 extern std::vector<Task> tasks;
 
-// Define your functions here
 void newTask() {
-    // Implement adding a new task
     int taskID;
-    if (tasks.empty()) {
+    std::string taskDes;
+
+    if (tasks.empty()) {//checks if tasks vector is empty and initializes it
         taskID=1;
     }
-    else {
+    else{
         taskID = tasks.back().id + 1;
     }
     
-    std::string taskDes;
     //std::cin.ignore();
     std::cout << taskID << "-> Enter Your Task: ";
     std::getline(std::cin,taskDes);
     std::cout<<std::endl;
     
-    tasks.push_back({ taskID,taskDes });
+    tasks.push_back({ taskID,taskDes });//pushes new task in tasks vector
 }
 
 void deleteTask() {
-    // Implement deleting a task
+    std::cout << "Type in the ID of the task you want delete: " << std::endl;
+    int userInput;
+    std::cin >> userInput;
+    std::cin.ignore();
+    for (auto i = tasks.begin(); i != tasks.end(); ++i) {
+        if (i->id==userInput) {
+            i->description.clear();
+        }
+    }
 }
 
 void editTask() {
-    // Implement editing a task
+    int userInput;
+    std::cout << "Type the ID of the task you want to edit: ";
+    std::cin >> userInput;
+    std::cin.ignore();
+
+    for (const Task& i : tasks) {
+        if (i.id==userInput) {
+            std::cout<<"ID: "<<i.id<<" "
+        }
+    }
 }
 
 void showTask() {
-    // Implement displaying all tasks
+    for (const Task& i:tasks) {
+        std::cout << "ID: " << i.id << std::endl;
+        std::cout << "Task: " << i.description << std::endl << std::endl;
+   }
+
+
 }
